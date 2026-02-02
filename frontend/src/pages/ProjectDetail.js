@@ -173,6 +173,11 @@ export const ProjectDetail = () => {
           .eq('id', existingValue.id);
 
         if (error) throw error;
+        
+        setCriteriaValues(prev => ({
+          ...prev,
+          [projectCriterionId]: { ...existingValue, [valueField]: value }
+        }));
       } else {
         // Insert new
         const { data, error } = await supabase
@@ -184,8 +189,6 @@ export const ProjectDetail = () => {
         if (error) throw error;
         setCriteriaValues(prev => ({ ...prev, [projectCriterionId]: data }));
       }
-
-      toast.success('Value saved');
     } catch (error) {
       toast.error('Failed to save: ' + error.message);
     }
