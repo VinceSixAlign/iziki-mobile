@@ -107,9 +107,13 @@ export const ProjectDetail = () => {
         .select();
 
       if (error) throw error;
-      setProjectCriteria(data);
+      
+      setProjectCriteria(data || []);
+      return data;
     } catch (error) {
+      console.error('Error initializing criteria:', error);
       toast.error('Failed to initialize criteria: ' + error.message);
+      return [];
     }
   };
 
