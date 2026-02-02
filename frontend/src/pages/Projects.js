@@ -151,6 +151,7 @@ export const Projects = () => {
                     <SelectContent>
                       <SelectItem value="buy">Buy</SelectItem>
                       <SelectItem value="rent">Rent</SelectItem>
+                      <SelectItem value="invest">Invest</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
