@@ -60,7 +60,10 @@ export const ProjectDetail = () => {
 
       // If no criteria exist yet, initialize them
       if (!projCritData || projCritData.length === 0) {
-        await initializeProjectCriteria(criteriaData);
+        const newCriteria = await initializeProjectCriteria(criteriaData);
+        if (newCriteria && newCriteria.length > 0) {
+          await loadCriteriaValues(newCriteria);
+        }
       } else {
         setProjectCriteria(projCritData);
         await loadCriteriaValues(projCritData);
