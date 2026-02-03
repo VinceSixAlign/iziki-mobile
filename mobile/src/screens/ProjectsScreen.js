@@ -256,7 +256,7 @@ export const ProjectsScreen = ({ navigation }) => {
                 <TouchableOpacity
                   style={[styles.modalButton, styles.createButton, creating && styles.buttonDisabled]}
                   onPress={handleCreateProject}
-                  disabled={creating}
+                  disabled={Boolean(creating)}
                   testID="submit-project-button"
                 >
                   <Text style={styles.createButtonText}>
