@@ -159,7 +159,7 @@ export const ProjectsScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <Modal
-        visible={Boolean(modalVisible)}
+        visible={!!modalVisible}
         animationType="slide"
         transparent={true}
         onRequestClose={() => setModalVisible(false)}
