@@ -11,8 +11,8 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   const authContext = useAuth();
-  const user = authContext.user;
-  const loading = authContext.loading === true || authContext.loading === 'true';
+  const user = authContext?.user ?? null;
+  const loading = Boolean(authContext?.loading ?? false);
 
   if (loading) {
     return (
