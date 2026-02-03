@@ -347,7 +347,7 @@ export const ProjectDetailScreen = ({ route, navigation }) => {
       <Modal
         visible={!!enumModalVisible}
         animationType="slide"
-        transparent={true}
+        transparent
         onRequestClose={() => setEnumModalVisible(false)}
       >
         <View style={styles.modalOverlay}>
