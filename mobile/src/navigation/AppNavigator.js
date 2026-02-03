@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   const { user, loading } = useAuth();
 
-  if (loading) {
+  if (Boolean(loading) === true) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#000" />
