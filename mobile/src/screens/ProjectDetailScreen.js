@@ -11,7 +11,6 @@ import {
   Modal,
 } from 'react-native';
 import { supabase } from '../lib/supabase';
-import { supabase } from '../lib/supabase';
 
 export const ProjectDetailScreen = ({ route, navigation }) => {
   const { projectId } = route.params;
