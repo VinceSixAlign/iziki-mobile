@@ -161,7 +161,7 @@ export const ProjectsScreen = ({ navigation }) => {
       <Modal
         visible={!!modalVisible}
         animationType="slide"
-        transparent={true}
+        transparent
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalOverlay}>
