@@ -345,7 +345,7 @@ export const ProjectDetailScreen = ({ route, navigation }) => {
       </ScrollView>
 
       <Modal
-        visible={enumModalVisible}
+        visible={Boolean(enumModalVisible)}
         animationType="slide"
         transparent={true}
         onRequestClose={() => setEnumModalVisible(false)}
