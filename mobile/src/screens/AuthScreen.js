@@ -78,7 +78,7 @@ export const AuthScreen = () => {
           <TouchableOpacity
             style={[styles.button, loading && styles.buttonDisabled]}
             onPress={handleSubmit}
-            disabled={Boolean(loading)}
+            disabled={!!loading}
             testID="auth-submit-button"
           >
             {loading ? (
