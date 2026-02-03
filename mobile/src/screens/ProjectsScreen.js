@@ -12,7 +12,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { supabase } from '../lib/supabase';
-import { useAuth } from '../contexts/AuthContext';
+import { supabase } from '../lib/supabase';
 
 export const ProjectsScreen = ({ navigation }) => {
   const [projects, setProjects] = useState([]);
@@ -26,7 +26,15 @@ export const ProjectsScreen = ({ navigation }) => {
     budget_target: '',
     budget_max: '',
   });
-  const { user, signOut } = useAuth();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+    };
+    getUser();
+  }, []);
 
   useEffect(() => {
     if (user) {
