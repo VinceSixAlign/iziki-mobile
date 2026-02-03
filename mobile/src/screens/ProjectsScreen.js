@@ -12,7 +12,6 @@ import {
   ScrollView,
 } from 'react-native';
 import { supabase } from '../lib/supabase';
-import { supabase } from '../lib/supabase';
 
 export const ProjectsScreen = ({ navigation }) => {
   const [projects, setProjects] = useState([]);
