@@ -10,14 +10,13 @@ import {
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import { useAuth } from '../contexts/AuthContext';
+import { supabase } from '../lib/supabase';
 
 export const AuthScreen = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const { signIn, signUp } = useAuth();
 
   const handleSubmit = async () => {
     if (!email || !password) {
@@ -28,9 +27,9 @@ export const AuthScreen = () => {
     setLoading(true);
     try {
       if (isLogin) {
-        await signIn(email, password);
+        await supabase.auth.signInWithPassword({ email, password });
       } else {
-        await signUp(email, password);
+        await supabase.auth.signUp({ email, password });
         Alert.alert('Success', 'Account created successfully');
       }
     } catch (error) {
