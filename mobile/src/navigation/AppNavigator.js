@@ -10,9 +10,11 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
-  const { user, loading } = useAuth();
+  const authContext = useAuth();
+  const user = authContext.user;
+  const loading = authContext.loading === true || authContext.loading === 'true';
 
-  if (Boolean(loading) === true) {
+  if (loading) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#000" />
