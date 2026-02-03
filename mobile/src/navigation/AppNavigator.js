@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AuthProvider, useAuth } from '../contexts/AuthContext';
+import { supabase } from '../lib/supabase';
 import { AuthScreen } from '../screens/AuthScreen';
 import { ProjectsScreen } from '../screens/ProjectsScreen';
 import { ProjectDetailScreen } from '../screens/ProjectDetailScreen';
@@ -9,10 +9,24 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
-const Navigation = () => {
-  const authContext = useAuth();
-  const user = authContext?.user ?? null;
-  const loading = !!(authContext?.loading);
+export const AppNavigator = () => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Check active session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   if (loading) {
     return (
@@ -35,14 +49,6 @@ const Navigation = () => {
         )}
       </Stack.Navigator>
     </NavigationContainer>
-  );
-};
-
-export const AppNavigator = () => {
-  return (
-    <AuthProvider>
-      <Navigation />
-    </AuthProvider>
   );
 };
 
