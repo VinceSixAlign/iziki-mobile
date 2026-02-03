@@ -188,7 +188,7 @@ export const ProjectsScreen = ({ navigation }) => {
 
               <Text style={styles.inputLabel}>Project Type</Text>
               <View style={styles.segmentedControl}>
-                {['buy', 'rent', 'invest'].map((type) => (
+                {['buy', 'rent'].map((type) => (
                   <TouchableOpacity
                     key={type}
                     style={[
