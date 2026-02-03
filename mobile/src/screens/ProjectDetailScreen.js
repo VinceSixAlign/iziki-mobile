@@ -26,6 +26,14 @@ export const ProjectDetailScreen = ({ route, navigation }) => {
   const [enumModalVisible, setEnumModalVisible] = useState(false);
 
   useEffect(() => {
+    const getUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+    };
+    getUser();
+  }, []);
+
+  useEffect(() => {
     if (user && projectId) {
       loadProjectData();
     }
