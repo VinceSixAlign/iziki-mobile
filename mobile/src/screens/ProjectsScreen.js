@@ -99,7 +99,7 @@ export const ProjectsScreen = ({ navigation }) => {
 
   const handleSignOut = async () => {
     try {
-      await signOut();
+      await supabase.auth.signOut();
     } catch (error) {
       Alert.alert('Error', 'Failed to sign out');
     }
