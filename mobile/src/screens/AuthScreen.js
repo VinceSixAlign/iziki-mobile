@@ -70,7 +70,7 @@ export const AuthScreen = () => {
             placeholder="••••••••"
             value={password}
             onChangeText={setPassword}
-            secureTextEntry
+            secureTextEntry={true}
             autoCapitalize="none"
             testID="auth-password-input"
           />
