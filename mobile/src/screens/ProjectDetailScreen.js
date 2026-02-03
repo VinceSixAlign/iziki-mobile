@@ -355,7 +355,7 @@ export const ProjectDetailScreen = ({ route, navigation }) => {
             <Text style={styles.modalTitle}>
               Select {selectedCriterion?.criterion.label}
             </Text>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
               {selectedCriterion && getEnumValuesForCriterion(selectedCriterion.criterion.key).map((enumValue) => (
                 <TouchableOpacity
                   key={enumValue}
