@@ -24,7 +24,7 @@ const Navigation = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: {false} }}>
         {!user ? (
           <Stack.Screen name="Auth" component={AuthScreen} />
         ) : (
