@@ -38,13 +38,25 @@ export const AppNavigator = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator>
         {!user ? (
-          <Stack.Screen name="Auth" component={AuthScreen} />
+          <Stack.Screen 
+            name="Auth" 
+            component={AuthScreen}
+            options={{ headerShown: false }}
+          />
         ) : (
           <>
-            <Stack.Screen name="Projects" component={ProjectsScreen} />
-            <Stack.Screen name="ProjectDetail" component={ProjectDetailScreen} />
+            <Stack.Screen 
+              name="Projects" 
+              component={ProjectsScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+              name="ProjectDetail" 
+              component={ProjectDetailScreen}
+              options={{ headerShown: false }}
+            />
           </>
         )}
       </Stack.Navigator>
