@@ -59,9 +59,9 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ 
-      user, 
-      session, 
-      loading: Boolean(loading), 
+      user: user ?? null, 
+      session: session ?? null, 
+      loading: loading ? true : false, 
       signUp, 
       signIn, 
       signOut 
