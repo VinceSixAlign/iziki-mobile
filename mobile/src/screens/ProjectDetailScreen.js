@@ -11,11 +11,11 @@ import {
   Modal,
 } from 'react-native';
 import { supabase } from '../lib/supabase';
-import { useAuth } from '../contexts/AuthContext';
+import { supabase } from '../lib/supabase';
 
 export const ProjectDetailScreen = ({ route, navigation }) => {
   const { projectId } = route.params;
-  const { user } = useAuth();
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState(null);
   const [systemCriteria, setSystemCriteria] = useState([]);
